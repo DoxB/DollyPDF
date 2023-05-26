@@ -1,6 +1,6 @@
 from langchain import PromptTemplate, LLMChain
 from langchain.llms import HuggingFacePipeline
-from dollypdf import load_pipeline
+from apis.dollypdf import load_pipeline
 
 # template for an instrution with no input
 prompt = PromptTemplate(
