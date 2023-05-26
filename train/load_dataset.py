@@ -1,7 +1,7 @@
 from datasets import load_dataset
 import train.load_model
 data = load_dataset("json", 
-                    data_files="./KoAlpaca/ko_alpaca_data.json")
+                    data_files="./train_dataset/ko_alpaca_data.json")
 
 def generate_prompt(data_point):
     # taken from https://github.com/tloen/alpaca-lora
