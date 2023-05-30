@@ -10,11 +10,11 @@ from transformers import AutoTokenizer, AutoModel, AutoConfig, GPTJForCausalLM
 
 from peft import prepare_model_for_int8_training, LoraConfig, get_peft_model
 
-import train.load_dataset
-import train.load_model
+from train import load_local_dataset
+from train import load_local_model
 
-model = train.load_model.model
-tokenizer = train.load_model.tokenizer
+model = load_local_model.model
+tokenizer = load_local_model.tokenizer
 
 ############################# setting ############################# 
 
@@ -44,11 +44,11 @@ config = LoraConfig(
 model = get_peft_model(model, config)
 tokenizer.pad_token_id = 0  # unk. we want this to be different from the eos token
 
-data = train.load_dataset.data
+data = load_local_dataset.data
 
 data = data.shuffle().map(
     lambda data_point: tokenizer(
-        train.load_dataset.generate_prompt(data_point),
+        load_local_dataset.generate_prompt(data_point),
         truncation=True,
         max_length=CUTOFF_LEN,
         padding="max_length",
@@ -74,4 +74,4 @@ trainer = transformers.Trainer(
 model.config.use_cache = False
 trainer.train(resume_from_checkpoint=False)
 
-model.save_pretrained("alpaca-lora-dolly-2.0")
+model.save_pretrained("./models/ko-alpaca-lora-dolly-2.0")

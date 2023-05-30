@@ -1,5 +1,5 @@
 from datasets import load_dataset
-import train.load_model
+import load_local_model
 data = load_dataset("json", 
                     data_files="./train_dataset/ko_alpaca_data.json")
 
@@ -26,4 +26,4 @@ def generate_prompt(data_point):
 {data_point["output"]}"""
 
 
-data = data.map(lambda data_point: {"prompt": train.load_model.tokenizer(generate_prompt(data_point))})
+data = data.map(lambda data_point: {"prompt": load_local_model.tokenizer(generate_prompt(data_point))})
