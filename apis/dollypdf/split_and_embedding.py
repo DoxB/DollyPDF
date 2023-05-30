@@ -1,7 +1,7 @@
 from langchain.embeddings import Embeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
-from dollypdf import load_pdf
+from apis.dollypdf import load_pdf
 
 from transformers import AutoModel, AutoTokenizer
 

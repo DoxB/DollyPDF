@@ -1,5 +1,6 @@
 import torch
-from pipeline import InstructionTextGenerationPipeline
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from apis.pipeline import InstructionTextGenerationPipeline
 
 # use dolly-v2-12b if you're using Colab Pro+, using pythia-2.8b for Free Colab
 
