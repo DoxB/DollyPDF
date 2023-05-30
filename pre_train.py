@@ -74,4 +74,4 @@ trainer = transformers.Trainer(
 model.config.use_cache = False
 trainer.train(resume_from_checkpoint=False)
 
-model.save_pretrained("./models/ko-alpaca-lora-dolly-2.0")
+model.save_pretrained("./local_models/ko-alpaca-lora-dolly-2.0")
